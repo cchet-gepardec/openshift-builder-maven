@@ -19,7 +19,7 @@ LABEL io.k8s.description="S2I Maven Builder (Java: ${JAVA_VERSION}, Maven: ${MAV
 RUN mkdir -p ${APPDIR}/target && \
     yum install -y \
         ${JAVA_VERSION} \
-        maven-${MAVEN_VERSION}} && \
+        maven-${MAVEN_VERSION} && \
     yum clean all && \
     chgrp -R 0 ${APPDIR} /etc/maven && \ 
     chmod -R g+rwX ${APPDIR} /etc/maven
