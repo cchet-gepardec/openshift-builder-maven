@@ -23,10 +23,11 @@ RUN mkdir -p ${APPDIR}/target && \
     yum install -y \
         ${JAVA_VERSION} && \
     yum clean all && \
-	curl -L http://mirror.klaus-uwe.me/apache/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz \
-	     | tar --strip-components=1 -zx -C /maven \
-    chgrp -R 0 ${APPDIR} /etc/maven && \ 
-    chmod -R g+rwX ${APPDIR} /etc/maven
+	mkdir /maven && \
+    curl -L --silent --show-error --fail https://archive.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz   \
+	     | tar --strip-components=1 -zx -C /maven && \
+    chgrp -R 0 ${APPDIR} /maven && \ 
+    chmod -R g+rwX ${APPDIR} /maven
 
 COPY s2i ${S2IDIR}
 RUN chgrp -R 0 ${S2IDIR} && \
