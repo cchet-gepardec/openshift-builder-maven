@@ -7,8 +7,8 @@ ENV BUILDER_CONTEXT_DIR="" \
     
 ARG S2IDIR="/home/s2i"
 ARG APPDIR="/deployments"
-ARG JAVA_VERSION="java-11-openjdk"
-ARG MAVEN_VERSION="3.5.4"
+ARG JAVA_VERSION
+ARG MAVEN_VERSION
 
 LABEL io.k8s.description="S2I Maven Builder (Java: ${JAVA_VERSION}, Maven: ${MAVEN_VERSION})" \
       io.k8s.display-name="S2I Maven Builder" \
