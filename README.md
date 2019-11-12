@@ -1,7 +1,7 @@
-[![Build Status](https://travis-ci.com/gepardec/openshift-S2I-builder-maven.svg?branch=master)](https://travis-ci.com/gepardec/openshift-S2I-builder-maven)
+[![Build Status](https://travis-ci.com/gepardec/openshift-builder-maven.svg?branch=master)](https://travis-ci.com/gepardec/openshift-builder-maven)
 ![Maintenance](https://img.shields.io/maintenance/yes/2019)
 ![Docker Pulls](https://img.shields.io/docker/pulls/gepardec/s2i-builder-maven)
-![GitHub](https://img.shields.io/github/license/gepardec/openshift-S2I-builder-maven)
+![GitHub](https://img.shields.io/github/license/gepardec/openshift-builder-maven)
 <p align="right">
 <img alt="gepardec" width=100px src="./.images/gepardec.png">
 </p>
@@ -61,7 +61,7 @@ oc new-project s2i-builder-maven \
 Let's build the **S2I Maven Builder** image from its repository and name it `s2i-builder-maven`. This will create a BuildConfig and an ImageStream named `s2i-builder-maven` and trigger the the first build of our image. 
 
 ```
-oc new-build https://github.com/gepardec/openshift-S2I-builder-maven#1.0.0 --name=s2i-builder-maven
+oc new-build https://github.com/gepardec/openshift-builder-maven#1.0.0 --name=s2i-builder-maven
 ```
 
 **Hint:** `#1.0.0` at the end of the repository url specifies a tag or branch. Providing a tag or a branch name is optional and if nothing is specified `master` will be selected.
@@ -144,7 +144,7 @@ To speed up our `binary-artefact` build we can set our own maven mirror(s) via a
 In short we **replace step 3 from Implementation 1** with
 
 ```
-oc new-build s2i-builder-maven~https://github.com/ckaserer/quickstart#18.0.0.Final \
+oc new-build s2i-builder-maven~https://github.com/wildfly/quickstart#18.0.0.Final \
      --name=binary-artefact \
      --env=BUILDER_MVN_MIRROR="*|https:/my-maven-mirror/path/to/maven-public/" \
      --env=BUILDER_MVN_MIRROR_ALLOW_FALLBACK=true
